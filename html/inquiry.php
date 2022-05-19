@@ -14,21 +14,32 @@ require '../php/config.php'
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Inquiry</title>
+	<link rel="stylesheet" type="text/css" href="../css/inquiry.css">
 </head>
 <body>
 <!-- ------------------------------------------------------------------- -->
 
+<div id="search">
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+	
 	Name :<input type="text" name="cName">
+	From:
 	<input type="date"  id ="dateI"  name="sentDate">
+	To:
 	<input type="date"  id ="dateI2"  name="sentDate2">
+	
+
+	<div id="buttons">
 	<input type="submit" value="Submit" name="searchSubmit">
 	<input type="reset" value="Reset">
 	<input type="submit" value="Show All" name ="showAll">
+	</div>
+
 </form>
+</div>
 
 <!-- ------------------------------------------------------------------- -->
-<table border="2" id = "inquiry">
+<table  id = "inquiry">
 <!-- ------------------------------------------------------------------- -->
 <?php 
 
@@ -57,7 +68,14 @@ require '../php/config.php'
 		global $conn;
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0){
-			
+			echo "<tr>
+    				<th>Name</th>
+    				<th>Email</th>
+    				<th>Message</th>
+    				<th>Date</th>
+    				<th>Response</th>
+    				<th>Delete</th>
+  				</tr>";
 			while($row = $result->fetch_assoc()){
 				$id = $row["inquiryID"];
 				echo "<tr>";
@@ -92,7 +110,7 @@ require '../php/config.php'
 			}
 		}
 		else{
-			echo "No results";
+			echo "<div id ='no-result'>No results</div>";
 		}
 	}
 ?>
