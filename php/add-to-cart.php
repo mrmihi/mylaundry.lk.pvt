@@ -67,7 +67,13 @@ else{
 
 	} // if the cart all ready has items in it
 } // This whole php code will only excute if code is sent.
+if (isset($_GET['type']) and $_GET['type'] == "showAll") {
+  $type = $_GET['type'];
+  header("location: ../html/order.php?type=$type");
+  exit();
+  }
 
+ 
 header("location: ../html/order.php");
 exit();
 ?>

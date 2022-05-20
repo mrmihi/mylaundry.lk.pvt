@@ -112,9 +112,9 @@ body{
   	border-radius: 4px;
   	cursor: pointer;
   	margin-right: 20px;
-  	margin-left: 20px;  
+  	margin-left: 20px; 
 }
 .cart-to-order{
 	width: 30%;
-	margin:  auto;
+	margin: auto;
 }

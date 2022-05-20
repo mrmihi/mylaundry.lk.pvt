@@ -115,8 +115,8 @@ foreach ($_SESSION["shopping_cart"] as $product){
 	<?php echo $product["quantity"]; ?>	
 </td>
 
-<td><?php echo "$".$product["price"]; ?></td>
-<td><?php echo "$".(float)$product["price"]*(int)$product["quantity"]; ?></td>
+<td><?php echo "Rs.".$product["price"]; ?></td>
+<td><?php echo "Rs.".(float)$product["price"]*(int)$product["quantity"]; ?></td>
 </tr>
 <?php
 $total_price += ((float)$product["price"]*(float)$product["quantity"]);
@@ -124,7 +124,7 @@ $total_price += ((float)$product["price"]*(float)$product["quantity"]);
 ?>
 <tr>
 <td colspan="5" align="right">
-<strong>TOTAL: <?php echo "$".$total_price; ?></strong>
+<strong>TOTAL: <?php echo "Rs.".$total_price; ?></strong>
 </td>
 </tr>
 </tbody>
