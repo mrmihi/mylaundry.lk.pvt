@@ -1,3 +1,9 @@
+<!--
+IT21167300
+Sumanasekara PDM
+MLB_08.02_3
+ -->
+ 
 <?php
 
 
@@ -15,7 +21,7 @@ if (isset($_POST['action']) && $_POST['action']=="remove"){
 				unset($_SESSION["shopping_cart"][$key]);
 				$status = "<div class='box' style='color:red;'>
 				Product is removed from your cart!</div>";
-				*/
+				*/ //loop thorugh to find the item not effective 
 				unset($_SESSION["shopping_cart"][$_POST['code']]);
 			}
 
@@ -32,7 +38,7 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
         $value['quantity'] = $_POST["quantity"];
         break; // Stop the loop after we've found the product
     }
-} // WILL CHANGE THE THE QUANTITY VALUE
+} // WILL CHANGE THE THE QUANTITY VALUE decided not to impelment this to many bugs
   	
 } */
 ?>
@@ -40,11 +46,11 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
 <html>
 <head>
 <title>Cart</title>
-<link rel='stylesheet' href='css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' href='../css/order-cart.css' type='text/css' media='all' />
 </head>
 <body>
 
-<div style="width:700px; margin:50 auto;">
+<div style="width:50vw; margin:50 auto;">
 
    
 
@@ -57,7 +63,7 @@ if(!empty($_SESSION["shopping_cart"])) {
 <div class="cart_div">
 
 <a href="cart.php">
-<img src="cart-icon.png" /> Cart
+<img src="../images/cart-icon.png" /> 
 <span><?php echo $cart_count; ?></span></a>
 
 </div>
@@ -80,7 +86,7 @@ if(isset($_SESSION["shopping_cart"])){
 <td>ITEM NAME</td>
 <td>QUANTITY</td>
 <td>UNIT PRICE</td>
-<td>ITEMS TOTAL</td>
+<td>ITEM TOTAL</td>
 </tr>	
 
 <?php		
@@ -90,7 +96,7 @@ foreach ($_SESSION["shopping_cart"] as $product){
 <tr>
 
 <td>
-	<img src='<?php echo $product["image"]; ?>' width="50" height="40" />
+	<img src='<?php echo $product["image"]; ?>' width="50" height="50" />
 </td>
 
 <td>
@@ -131,13 +137,17 @@ else{
 	}
 ?>
 </div>
-
-<div style="clear:both;"></div>
-
-
-
-
-
+</div>
+<div class = "cart-to-order">
+	
+        <button class="btn" onclick="window.location.href = 'order.php';">
+            Add Items
+        </button>
+   
+        <button class="btn" onclick="window.location.href = 'payment.php';">
+            Order Now
+        </button>
+    
 </div>
 </body>
 </html>
