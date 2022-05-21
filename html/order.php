@@ -7,6 +7,10 @@ MLB_08.02_3
 <?php
 
 session_start();
+
+if (!isset($_SESSION['username'])) {
+    header("location: login.php");} // if the user is not logged in this will redirect the user to login
+
 require'../php/config.php';
 ?>
 
@@ -150,8 +154,8 @@ function select($sql,$displayType){
                     
 				    <h4 class="line-1">mylaundry.lk@gmail.com </h4>
 				    <h4 class="line-2">133, St.Peters Road, Colombo</h4>
-				    <a  class="infor-line" href="privacy.html">Privacy Policy</a><br>
-				    <a  class="infor-line" href="term-of-services.html">Terms of Services</a>
+				    <a  class="infor-line" href="privacy-policy.html">Privacy Policy</a><br>
+				    <a  class="infor-line" href="terms-of-services.html">Terms of Services</a>
 				    <h4 class="line-5"> &copy; Copyright Infromation</h4>
 
 				<div class="social-links">

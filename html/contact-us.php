@@ -5,6 +5,9 @@ MLB_08.02_3
  -->
 
 <?php
+
+//any one can access this page
+
 require'../php/config.php'; ?>
 
 <!DOCTYPE html>
@@ -107,8 +110,8 @@ if(isset($_POST["name"])){
                     
             <h4 class="line-1">mylaundry.lk@gmail.com </h4>
             <h4 class="line-2">133, St.Peters Road, Colombo</h4>
-            <a  class="infor-line" href="privacy.html">Privacy Policy</a><br>
-            <a  class="infor-line" href="term-of-services.html">Terms of Services</a>
+            <a  class="infor-line" href="privacy-policy.html">Privacy Policy</a><br>
+            <a  class="infor-line" href="terms-of-services.html">Terms of Services</a>
             <h4 class="line-5"> &copy; Copyright Infromation</h4>
 
         <div class="social-links">

@@ -1,4 +1,5 @@
 
+/*In case your viewport (display device) is larger line 42,62,77 should be incremented for a better navigation bar*/
 *{
 	margin: 0;   /*remake all default margin values to 0*/
 	padding: 0;  /*remake all default padding values to 0*/
@@ -38,7 +39,7 @@ body{
 .navbar
 {	 
 	background-image: linear-gradient( #005cbf , #018ce2, #07b1cb);
-	height: 23vh;
+	height: 23vh; /*if you view port is high, increment this */
 	width: 100vw;
 	position: fixed;
 	z-index: 28; /*Z-index provides us a way to bring elements to the front or to the back to make stacked elements display corretly.*/
@@ -57,7 +58,8 @@ body{
 
 .nav-hidden .menu
 {
-	margin-top: 90px;
+	/*margin-top: 90px;*/
+	margin-top: 15vh; /*if you view port is high, increment this */
 	transform: translatex(-200px);
 	transition: 0.5s all ease-in-out;
 }
@@ -71,7 +73,8 @@ body{
 	
 .nav-hidden .cart-profile .user-icon 
 {
-	margin-top: 96px;
+	/*margin-top: 96px;*/
+	margin-top: 15vh; /*if you view port is high, increment this */
 	font-size: 23px;
 	/*margin-left: 4vw;*/
 	transition: 0.5s all ease-in-out;

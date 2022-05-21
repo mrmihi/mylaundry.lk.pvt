@@ -9,38 +9,20 @@ MLB_08.02_3
 
 session_start();
 
+if (!isset($_SESSION['username'])) {
+    header("location: login.php");} // if the user is not logged in this will redirect the user to login
+
 
 if (isset($_POST['action']) && $_POST['action']=="remove"){
 
 	if(!empty($_SESSION["shopping_cart"])) {
 
-/*
-		foreach($_SESSION["shopping_cart"] as $key => $value) {
-
-			if($_POST["code"] == $key){
-				unset($_SESSION["shopping_cart"][$key]);
-				$status = "<div class='box' style='color:red;'>
-				Product is removed from your cart!</div>";
-				*/ //loop thorugh to find the item not effective 
 				unset($_SESSION["shopping_cart"][$_POST['code']]);
 			}
 
 			if(empty($_SESSION["shopping_cart"])) unset($_SESSION["shopping_cart"]);
 		}
-	/*}*/
-//} // will remove the item if its in the cart if the cart is empty will delete the cart session
-
-
-/*
-if (isset($_POST['action']) && $_POST['action']=="change"){
-  foreach($_SESSION["shopping_cart"] as &$value){
-    if($value['code'] === $_POST["code"]){
-        $value['quantity'] = $_POST["quantity"];
-        break; // Stop the loop after we've found the product
-    }
-} // WILL CHANGE THE THE QUANTITY VALUE decided not to impelment this to many bugs
-  	
-} */
+	// will remove the item if its in the cart if the cart is empty will delete the cart session
 ?>
 
 <html>
@@ -199,8 +181,8 @@ else{
                     
 				    <h4 class="line-1">mylaundry.lk@gmail.com </h4>
 				    <h4 class="line-2">133, St.Peters Road, Colombo</h4>
-				    <a  class="infor-line" href="privacy.html">Privacy Policy</a><br>
-				    <a  class="infor-line" href="term-of-services.html">Terms of Services</a>
+				    <a  class="infor-line" href="privacy-policy.html">Privacy Policy</a><br>
+				    <a  class="infor-line" href="terms-of-services.html">Terms of Services</a>
 				    <h4 class="line-5"> &copy; Copyright Infromation</h4>
 
 				<div class="social-links">

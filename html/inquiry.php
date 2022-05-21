@@ -5,6 +5,12 @@ MLB_08.02_3
  -->
 
 <?php 
+
+session_start();
+
+if (!isset($_SESSION['adminname'])) {
+    header("location: login.php");} // if the logged in user is not an admin this will redirect to the login
+
 require '../php/config.php' 
 ?>
 
@@ -194,8 +200,8 @@ require '../php/config.php'
                     
 				    <h4 class="line-1">mylaundry.lk@gmail.com </h4>
 				    <h4 class="line-2">133, St.Peters Road, Colombo</h4>
-				    <a  class="infor-line" href="privacy.html">Privacy Policy</a><br>
-				    <a  class="infor-line" href="term-of-services.html">Terms of Services</a>
+				    <a  class="infor-line" href="privacy-policy.html">Privacy Policy</a><br>
+				    <a  class="infor-line" href="terms-of-services.html">Terms of Services</a>
 				    <h4 class="line-5"> &copy; Copyright Infromation</h4>
 
 				<div class="social-links">
