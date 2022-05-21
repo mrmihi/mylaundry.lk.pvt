@@ -1,0 +1,79 @@
+*{
+	margin: 0;   /*remake all default margin values to 0*/
+	padding: 0;  /*remake all default padding values to 0*/
+}
+
+.fotter
+{
+	top: 900px;
+}
+.pickup
+{
+	position: absolute;
+	width: 1400px;
+	height: 550px;
+	margin: 200px 20px 10px 60px;
+	display: flex;
+}
+
+.pickup-content-1
+{
+	width: 60%;
+}
+
+.pickup-content-1  h3
+{
+	color: #0e3959;
+	font-weight: 500;
+	font-size: 30px;
+	margin-top: 60px;
+	margin-bottom: -15px;
+	margin-left: 50px;
+	width: 500px;
+}
+
+.pickup-content-1-box-1 
+{
+	display: flex;
+}
+
+.pickup-content-1-box-1 .box-1
+{
+	margin: 50px 100px 40px 50px;
+}
+
+.pickup-content-1-box-1 .box-1  p 
+{
+	font-size: 18px;
+	margin-top: 20px ;
+}
+
+.pickup-content-1-box-2
+{
+	display: flex;
+}
+
+.pickup-content-1-box-2 .box-2
+{
+	margin: 50px 100px 40px 50px;
+}
+
+.pickup-content-1-box-2 .box-2 p 
+{
+	font-size: 18px;
+	margin-top: 20px ;
+}
+
+.pickup-content-2
+{
+	width: 40%;
+	margin-left: -80px;
+	margin-top: 70px;
+}
+
+.pickup-content-2 iframe
+{
+	width: 600px;
+	height: 450px;
+}
+

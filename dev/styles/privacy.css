@@ -1,0 +1,28 @@
+*{
+	margin: 0;   /*remake all default margin values to 0*/
+	padding: 0;  /*remake all default padding values to 0*/
+}
+.privacy-head-text 
+{
+	position: sticky;
+	margin-top: 180px;
+	margin-bottom: -80px ;
+	margin-left: 590px;
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: 39px;
+}
+.privacy-content
+{
+	position: relative;
+	max-width: 1200px;
+	padding: 10px;
+	margin-top: 200px;
+	margin-left: 180px;
+	height: 1400px;
+}
+.privacy-discription
+{
+	text-decoration: none;
+	font-size: 25px;
+}

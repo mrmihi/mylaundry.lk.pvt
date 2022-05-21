@@ -1,0 +1,35 @@
+*{
+	margin: 0;   /*remake all default margin values to 0*/
+	padding: 0;  /*remake all default padding values to 0*/
+}
+
+
+.aboutus-image 
+{
+	position: absolute;
+
+}
+
+.aboutus-image img 
+{
+	min-width: 1485px;
+	height: 600px;
+	margin: 180px 10px 0px 20px;
+
+}
+.aboutus-content
+{
+	position: relative ;
+	width: 1200px;
+	height: 900px;
+	text-align: center;
+	top: 850px;
+	left: 100px;
+	text-align: center;
+	align-items: center;
+}
+.aboutus-content h2
+{
+	font-size: 50px;
+	margin: 15px;
+}

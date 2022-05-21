@@ -1,0 +1,244 @@
+
+*{
+	margin: 0;   /*remake all default margin values to 0*/
+	padding: 0;  /*remake all default padding values to 0*/
+}
+
+.main
+{
+	width: 100%;
+	/*background-image: url(../images/1.jpg) ; */
+	background-color: ghostwhite;
+	/*background-position: center;*/
+	/*background-size: cover;*/
+	height: 1000px;	
+}
+
+.icon 
+{
+	width: 200px;  /*make a size of logo width*/
+	float: left;
+	height: 70px;  /*make a size of logo hegiht*/
+}
+
+.logo /*logo styles*/
+{
+	color: orange; /*logo font colocr orange*/
+	height: 110px;
+	width: 140px;
+	margin: 5px 10px 0px 15px;	
+}
+
+.menu 
+{
+	width: 1000px;  /*make a size of menu bar width*/
+	float: left;   /*menu bar put on next to logo*/
+	height: 700px; /*make a size of menu bar height*/
+	border: black;
+	margin-top: 20px;
+	margin-left: 10px;	
+}
+
+.navbar
+{
+	background-color: gray;
+	height: 120px;
+}
+
+.menu-ul
+{
+	float: left;     /*ul itim are put on next to logo*/
+	display: flex;  /*showing menu bar inline(default mode is line by line)*/
+	justify-content: center;
+	align-items: center;
+}
+
+.menu .menu-ul li 
+{
+	list-style: none;   /*remove all style give by system defalut like as dot*/
+	margin-right: 30px; /*space gap between menu bar's items*/
+	margin-top: 47px;   /*make space top of menu bar */
+	font-size: 17px;    /*front size of menu bar items */	
+}
+
+.menu-ul li a 
+{
+	text-decoration: none;
+	color: black;
+	font-family: sans-serif;
+	font-weight: bold;
+	transition:  0.5s ease-in-out;
+}
+
+.menu-ul li a:hover
+{
+	color: green;
+}
+
+.cart-profile
+{
+	display: flex;
+}
+
+.cart-profile a
+{
+	width: 70px;
+			
+}
+
+.fa-solid 
+{
+	margin-top: 50px;
+	font-size: 30px;
+	color: black;
+	margin-left: 190px;
+	transition: 0.5s ease-in-out; 
+}
+
+ .cart-profile a:hover .fa-solid 
+{
+	color: green;
+}
+
+.fotter
+{
+	display: flex;
+	position: relative;
+	width: 100%;
+	margin-top: 750px;
+	background-color: gray;
+	height: 220px;
+}
+
+.content-1 
+{
+	width: 25%;
+	height: 200px;
+}
+
+.app-googleplay 
+{
+	width: 130px;
+	height: 58px;		
+}
+
+.app-appstore
+{
+	width: 115px;
+	height: 40px;		
+}
+
+h3 
+{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+	color: black;
+	text-align: center;
+	margin-top: 30px;
+}
+
+.content-2 
+{
+	width: 50%;
+	height: 200px;
+}
+
+.content-3 
+{
+	width: 25%;
+	height: 200px;
+}
+
+h4
+{
+	font-family: Verdana;
+	font-size: 16px;
+	color: #6600FF;	
+}
+
+#line-1
+{	
+	margin-top: 30px;
+	margin-left: 77px;
+}
+
+#line-2
+{
+	margin-left: 370px;
+	margin-top: -14px;
+}
+
+#line-3
+{
+	margin-top: 15px;
+	margin-left: 190px;
+}
+
+#line-4
+{
+	margin-left: 400px;
+	margin-top: -14px;
+}
+
+#line-5
+{
+	margin-top: 15px;
+	margin-left: 280px;
+}
+
+.social-links
+{
+	display: flex;
+	margin-left: 270px;
+	margin-top: 20px;
+}
+
+.social-links a
+{
+	width: 60px;
+	height: 80px;
+	text-align: center;
+	text-decoration: none;
+	color: #000;
+	transition: 0.5s;
+	
+}
+
+.social-links a .fa-brands
+{
+	font-size: 30px;
+}
+
+.social-links a:hover
+{
+	color: blue;
+}
+
+.content-3  
+{
+	transition: 0.5s;
+}
+
+ #quick-link-header
+{
+	margin-bottom: 20px;
+}
+
+.content-3  .quick-link-a 
+{
+	font-weight: bold;
+	font-size: 17px;
+	color: blue;
+	transition: 0.5s;
+}
+
+.quick-link-ul .quick-link-a:hover 
+{
+	color: red;
+}
+
+.quick-link-ul 
+{
+	margin-left: 150px;
+}

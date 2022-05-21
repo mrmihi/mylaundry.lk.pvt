@@ -1,0 +1,73 @@
+
+*{
+	margin: 0;   /*remake all default margin values to 0*/
+	padding: 0;  /*remake all default padding values to 0*/
+}
+
+.package-head-text 
+{
+	position: sticky;
+	margin-top: 220px;
+	margin-bottom: -80px ;
+	margin-left: 590px;
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: 49px;
+}
+
+.package
+{
+	position: absolute;
+	display: flex;
+	max-width: 1500px;
+	max-height: 669px;
+	top: 201px;
+	text-align: center;
+}
+
+.package-body
+{
+	width: 330px;
+	margin: 0px 20px;
+	height: 609px;
+	border: 2px solid black;
+	transition: 0.3s all ease-in-out;
+}
+
+.package-body:hover
+{
+	border-color: red;
+	transform: scale(1.02);
+
+}
+
+.package-type-name
+{
+	color: black;
+	font-size: 20px;
+	margin-top: 40px;
+	transition: 0.5s ease;
+}
+
+.package-type-name:hover
+{
+	color: red;	
+}
+
+.package-logo
+{
+	margin-top: 40px;	
+	transition: 0.3s all ease-in-out;
+}
+
+.package-logo:hover
+{
+	transform: scale(1.44);
+	
+}
+
+.package-discription
+{
+	margin-top: 80px;
+	font-size: 19px;
+}

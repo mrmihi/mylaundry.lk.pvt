@@ -1,0 +1,50 @@
+
+*{
+	margin: 0;   /*remake all default margin values to 0*/
+	padding: 0;  /*remake all default padding values to 0*/
+}
+
+.donation-head-text 
+{
+	position: sticky;
+	margin-top: 80px;
+	margin-bottom: -80px ;
+	margin-left: 40px;
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: 30px;
+
+}
+
+.donation-image 
+{
+	position: absolute;
+
+}
+
+.donation-image img 
+{
+	min-width: 785px;
+	height: 350px;
+	margin: 180px 10px 0px 300px;
+
+}
+.donation-content 
+{
+	position: relative ;
+	width: 1200px;
+	height: 900px;
+	text-align: center;
+	top: 600px;
+	left: 100px;
+
+	text-align: center;
+	align-items: center;
+
+}
+
+.donation-content p
+{
+	
+
+}
