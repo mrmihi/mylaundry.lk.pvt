@@ -1,46 +1,3 @@
-<?php 
-
-require '../php/config.php';
-
-session_start();
-
-error_reporting(0);
-
-if (isset($_SESSION['username'])) {
-    header("Location: user.php"); // if the user is logged in this will redirect in to the user page 
-}
-
-if (isset($_SESSION['adminname'])) {
-    header("Location: admin.php"); // if the user is logged in this will redirect in to the user page 
-}
-
-if (isset($_POST['submit'])) {
-	$email = $_POST['email'];
-	$password = md5($_POST['password']);
-
-	$sql = "SELECT * FROM login_register WHERE email='$email' AND password='$password'";
-	$result = mysqli_query($conn, $sql);
-	if ($result->num_rows > 0) {
-		 $row = mysqli_fetch_assoc($result);
-		
-		if ($row["type"] == "user") {
-
-			$_SESSION['username'] = $row['username'];
-		    header("Location: index.php"); // redirects into home
-
-
-	    }elseif ($row["type"] == "admin"){
-
-			$_SESSION['adminname'] = $row['username'];
-
-		    header("Location: admin.php");
-	    }
-	} else {
-		echo "<script>alert('Woops! Email or Password is Wrong.')</script>";
-    }
-}
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,16 +6,14 @@ if (isset($_POST['submit'])) {
 
 	<title>MyLoundry.lk</title>
 	<link rel="stylesheet" type="text/css" href="../css/header-footer.css">
-	<link rel="stylesheet" type="text/css" href="../css/login-register.css">
+	<link rel="stylesheet" type="text/css" href="../css/pickup.css">
 
 <!-- This icon pack is  used to geticons that is used in the footer -->
 	<script src="https://kit.fontawesome.com/a340bc40a1.js" crossorigin="anonymous"></script> 
 
-
 </head>
 <body>
 	
-
 		<div class ="navbar">
 			
 		    <div class="icon">
@@ -84,23 +39,55 @@ if (isset($_POST['submit'])) {
 		</div> <!--end of navbar div tag-->
 
 <!-- ---------------------------HEADER ENDS HERE--------------------------------------------------------------------- -->	
-		
 
-<div class="container">
-		<form action="" method="POST" class="login-email">
-			<p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
-			<div class="input-group">
-				<input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
-			</div>
-			<div class="input-group">
-				<input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
-			</div>
-			<div class="input-group">
-				<button name="submit" class="btn">Login</button>
-			</div>
-			<p class="login-register-text">Don't have an account? <a href="register.php">Register Here</a>.</p>
-		</form>
-	</div>
+<div class="pickup">
+			<div class="pickup-content-1">
+				<h3>Pickup Location :</h3>
+
+				<div class="pickup-content-1-box-1">
+
+				    <div class="box-1">
+				    	<h2>Location #1</h2>
+				    	<p>Address Line 1, <br> Address Line 1, <br> City. </p>	
+				    </div> <!--end of box-1 div tag-->
+    
+				    <div class="box-1">
+				    	<h2>Location #2</h2>
+				    	<p>Address Line 1, <br> Address Line 1, <br> City. </p>	
+				    </div> <!--end of box-1 div tag-->
+    
+				    <div class="box-1">
+				    	<h2>Location #3</h2>
+				    	<p>Address Line 1, <br> Address Line 1, <br> City. </p>	
+				    </div> <!--end of box-1 div tag-->
+			    </div> <!--end of pickup-content-1-box-1 div tag-->
+
+				<div class="pickup-content-1-box-2">
+
+				    <div class="box-2">
+						<h2>Location #4</h2>
+						<p>Address Line 1, <br> Address Line 1, <br> City. </p>	
+				    </div> <!--end of box-2 div tag-->
+
+				    <div class="box-2">
+						<h2>Location #5</h2>
+						<p>Address Line 1, <br> Address Line 1, <br> City. </p>	
+				    </div> <!--end of box-2 div tag-->
+
+				    <div class="box-2">
+						<h2>Location #6</h2>
+						<p>Address Line 1, <br> Address Line 1, <br> City. </p>	
+				    </div> <!--end of box-2 div tag-->
+			    </div> <!--end of pickup-content-1-box-2 div tag-->
+			</div> <!--end of pickup-content-1 div tag-->
+
+			<div class="pickup-content-2">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.8016261424004!2d79.97016641474316!3d6.914305995004072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25721534f16b1%3A0x3d0a0a992421901b!2sSLIIT%20Main%20Gate%20Security%20Points!5e0!3m2!1sen!2slk!4v1650219708270!5m2!1sen!2slk"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+				
+			</div> <!--end of pickup-content-2 div tag-->
+			
+		</div> <!--end of pickup div tag-->
+
 
 <!-- ---------------------------FOOTER BEGINS HERE--------------------------------------------------------------------- -->		
 		<div class="footer">
@@ -119,8 +106,8 @@ if (isset($_POST['submit'])) {
                     
 				    <h4 class="line-1">mylaundry.lk@gmail.com </h4>
 				    <h4 class="line-2">133, St.Peters Road, Colombo</h4>
-				    <a  class="infor-line" href="privacy-policy.html">Privacy Policy</a><br>
-				    <a  class="infor-line" href="terms-of-services.html">Terms of Services</a>
+				    <a  class="infor-line" href="privacy.html">Privacy Policy</a><br>
+				    <a  class="infor-line" href="term-of-services.html">Terms of Services</a>
 				    <h4 class="line-5"> &copy; Copyright Infromation</h4>
 
 				<div class="social-links">
@@ -162,7 +149,7 @@ if (isset($_POST['submit'])) {
         nav.classList.remove("nav-hidden");
         }
 
-        lastScrollY = 0;
+        lastScrollY = 60;
         });
  
  </script>

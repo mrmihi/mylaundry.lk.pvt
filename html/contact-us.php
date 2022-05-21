@@ -59,7 +59,7 @@ require'../php/config.php'; ?>
   <label for="email">Email:										             </label><br>
   <input type="email" id="cemail" name="email" required>		 <br><br>
   <label for="massage">Message:									             </label><br>
-  <textarea id="massage" name="msg" required>Enter the message...</textarea><br>
+  <textarea id="massage" name="msg" placeholder="Enter the message..." required></textarea><br>
   <input type="submit" value="Submit">
 </form>
 </div>
