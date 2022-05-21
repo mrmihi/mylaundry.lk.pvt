@@ -1,9 +1,15 @@
+/*IT21167300
+Sumanasekara PDM
+MLB_08.02_3*/
+
 #search{
-  margin-top: 5vh;
-  width: 97%;
+  position: relative;
+  top: 30vh;
+  width: 90%;
+  margin: auto;
   font-family: monospace;
   font-size: 16px;
-  margin-left: -2.5px;
+  /*margin-left: -2.5px;*/
   border: 3px solid darkblue ;
   border-width:  2px 2px 2px 2px;
   border-radius: 5px;
@@ -50,6 +56,8 @@ input[type=submit]:hover,input[type=reset]:hover {
 
 table {
   /*border: 1px solid;*/
+  position: relative;
+  top : 30vh;
   margin :10vh auto;
   table-layout: fixed;
   width: 100%;

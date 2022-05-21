@@ -1,33 +1,61 @@
-<!--
-IT21167300
-Sumanasekara PDM
-MLB_08.02_3
- -->
- 
-<?php
+<?php 
+
+require '../php/config.php';
 
 session_start();
-require'../php/config.php';
+
+error_reporting(0);
+
+if (isset($_SESSION['username'])) {
+    header("Location: user.php"); // if the user is logged in this will redirect in to the user page 
+}
+
+if (isset($_POST['submit'])) {
+	$email = $_POST['email'];
+	$password = md5($_POST['password']);
+
+	$sql = "SELECT * FROM login_register WHERE email='$email' AND password='$password'";
+	$result = mysqli_query($conn, $sql);
+	if ($result->num_rows > 0) {
+		 $row = mysqli_fetch_assoc($result);
+		
+		if ($row["type"] == "user") {
+
+			$_SESSION['username'] = $row['username'];
+		    header("Location: index.php"); // redirects into home
+
+
+	    }elseif ($row["type"] == "admin"){
+
+			$_SESSION['adminname'] = $row['username'];
+
+		    header("Location: admin.php");
+	    }
+	} else {
+		echo "<script>alert('Woops! Email or Password is Wrong.')</script>";
+    }
+}
+
 ?>
-
-
+<!DOCTYPE html>
 <html>
 <head>
-<title>Order Now</title>
-<link rel='stylesheet' href='../css/order-cart.css' type='text/css' media='all' />
-<!-- Search function css -->
-<link rel="stylesheet" type="text/css" href="../css/inquiry.css">
-<!-- Search function css ends-->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<title>MyLoundry.lk</title>
 	<link rel="stylesheet" type="text/css" href="../css/header-footer.css">
+	<link rel="stylesheet" type="text/css" href="../css/login-register.css">
 
 <!-- This icon pack is  used to geticons that is used in the footer -->
-	<script src="https://kit.fontawesome.com/a340bc40a1.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/a340bc40a1.js" crossorigin="anonymous"></script> 
+
 
 </head>
 <body>
+	
 
-<div class ="navbar">
+		<div class ="navbar">
 			
 		    <div class="icon">
 			    <img class="logo" src="../images/laundry service.jpg" alt="comapny logo"></img>
@@ -52,86 +80,23 @@ require'../php/config.php';
 		</div> <!--end of navbar div tag-->
 
 <!-- ---------------------------HEADER ENDS HERE--------------------------------------------------------------------- -->	
+		
 
-<!-- Search function -->
-<div id="search">
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-	
-	Search :<input type="text" name="cName">
-	Price Range ( Rs.0 - Rs.500):
-	<input type="range"  id ="dateI"  name="sentDate" min="0" max="500" step="100">
-	(Rs.<span id="slider-value"></span>)
-
-	<div id="buttons">
-	<input type="submit" value="Submit" name="searchSubmit">
-	<input type="reset" value="Reset">
-	<input type="submit" value="Show All" name ="showAll">
+<div class="container">
+		<form action="" method="POST" class="login-email">
+			<p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
+			<div class="input-group">
+				<input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
+			</div>
+			<div class="input-group">
+				<input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
+			</div>
+			<div class="input-group">
+				<button name="submit" class="btn">Login</button>
+			</div>
+			<p class="login-register-text">Don't have an account? <a href="register.php">Register Here</a>.</p>
+		</form>
 	</div>
-
-</form>
-</div>
-
-<!-- Search function ends-->
-
-<div class ="order-main">
-	
-<?php
-if(!empty($_SESSION["shopping_cart"])) {
-$cart_count = count(array_keys($_SESSION["shopping_cart"]));
-?> 
- 
-
-<div class="cart_div">
-<a href="cart.php"><img src="../images/cart-icon.png" /><span><?php echo $cart_count; ?></span></a>
-</div>
-
-<?php
-}
-
-if (isset($_GET['type']) and $_GET['type'] == "showAll") {
-	$sql = "SELECT * FROM products";
-	$displayType = "showAll";
-	select($sql,$displayType);	
-	} //user presses show all,redirection will be handled by this
-
-if(isset($_POST['showAll'])){
-	$sql = "SELECT * FROM products";
-	$displayType = "showAll";
-	select($sql,$displayType);
-	} // user press "show all"
-
-	if(isset($_POST['searchSubmit'])){
-	$c_Name = $_POST['cName'];
-	$sDate = $_POST['sentDate'];
-	$sql = "SELECT * FROM products WHERE ( name LIKE '%$c_Name%' AND price BETWEEN 100 AND $sDate)";
-	select($sql,0);
-	} //user fills the search form 
-
-
-
-function select($sql,$displayType){
-	global $conn;
-	$result = $conn->query($sql);
-
-	while($row = $result->fetch_assoc()){
-			echo "<div class='product_wrapper'>
-				  <form method='post' action='../php/add-to-cart.php?type=".$displayType."'>
-				  <input type='hidden' name='code' value=".$row['code']." />
-				  <div class='image'><img src='".$row['image']."' width = '100px' height = '100px' /></div>
-				  <div class='name'>".$row['name']."</div>
-			   	  <div class='price'>Rs.".$row['price']."</div>
-				  <button type='submit' class='buy'>Add to Cart</button>
-				  </form>
-			   	  </div>";
-	        }
-}
-
-?>
-
-
-
-</div>
-
 
 <!-- ---------------------------FOOTER BEGINS HERE--------------------------------------------------------------------- -->		
 		<div class="footer">
@@ -181,16 +146,6 @@ function select($sql,$displayType){
 </body>
 
 <script>
-var slider = document.getElementById("dateI");
-var output = document.getElementById("slider-value");
-output.innerHTML = slider.value;
-
-slider.oninput = function() {
-  output.innerHTML = this.value;
-}
-</script>
-
-<script>
 		// Enable hidden nav bar
     
         const nav = document.querySelector(".navbar");
@@ -207,4 +162,5 @@ slider.oninput = function() {
         });
  
  </script>
+
 </html>

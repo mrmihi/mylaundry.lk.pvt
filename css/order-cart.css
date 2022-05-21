@@ -8,6 +8,18 @@ body{
 	font-family: monospace;
 }
 
+.cart-main {
+	position: relative;
+	top: 25vh;
+	width:50vw; 
+	margin:50 auto;
+}
+.order-main{
+	width:70vw; 
+	margin:50 auto; 
+	position: relative;
+	top : 30vh;
+}
 .product_wrapper {
 	float:left;
 	padding: 10px;
@@ -115,6 +127,8 @@ body{
   	margin-left: 20px; 
 }
 .cart-to-order{
+	position: relative;
+	top : 20vh;
 	width: 30%;
 	margin: auto;
 }

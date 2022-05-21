@@ -5,6 +5,8 @@ MLB_08.02_3
 */
 
 #contact{
+  position: relative;
+  top: 10vh;
   padding: 20vh 10px 0px 10vw;
   display: flex;
   font-family: monospace;
@@ -12,6 +14,7 @@ MLB_08.02_3
 }
 
 #contact-form{
+
   margin: 0 0 0 0;
   width: 40%;
   border: 3px solid #222831;
