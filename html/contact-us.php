@@ -10,6 +10,7 @@ MLB_08.02_3
 
 require'../php/config.php'; ?>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +19,10 @@ require'../php/config.php'; ?>
   <link rel="stylesheet" type="text/css" href="../css/contact-us.css">
   <link rel="stylesheet" type="text/css" href="../css/header-footer.css">
 
-<!-- This icon pack is  used to geticons that is used in the footer -->
+<!-- This icon pack is  used to get icons that is used in the footer -->
   <script src="https://kit.fontawesome.com/a340bc40a1.js" crossorigin="anonymous"></script>
+<!-- --------------------------------------------------------------- -->
+
 	<title>Contact Us</title>
 </head>
 <body>
@@ -32,7 +35,7 @@ require'../php/config.php'; ?>
 
             <div class="menu">
               <ul  class="menu-ul">
-                <li ><a class="menu-a" href="home.html">HOME</a></li>
+                <li ><a class="menu-a" href="index.php">HOME</a></li>
                 <li ><a class="menu-a"  href="about-us.html">ABOUT US </a></li>
                 <li ><a class="menu-a"  href="how-it-works.html">HOW IT WORKS</a></li>
                 <li ><a class="menu-a"  href="faq.html">FAQ</a></li>
@@ -128,9 +131,11 @@ if(isset($_POST["name"])){
         <ul class="quick-link-ul">
           <li><a class="quick-link-a" href="services.html">Services</a></li>
           <li ><a class="quick-link-a" href="package.html">Packages</a></li>
+          <li ><a class="quick-link-a" href="feedback.php">Feedback</a></li>
+          <li ><a class="quick-link-a" href="review.php">Reviews</a></li>
           <li ><a class="quick-link-a" href="donate.html">Donate</a></li>
           <li ><a class="quick-link-a"  href="login.php">Login</a></li>
-          <li ><a class="quick-link-a" href="register.php">Register</a></li>
+          <li ><a class="quick-link-a" href="logout.php">Logout</a></li>
         </ul> 
 
       </div> <!--end of content-3 div tag-->  

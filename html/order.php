@@ -6,18 +6,22 @@ MLB_08.02_3
  
 <?php
 
+//only users can visit this page
+
 session_start();
 
 if (!isset($_SESSION['username'])) {
     header("location: login.php");} // if the user is not logged in this will redirect the user to login
 
 require'../php/config.php';
+ 
 ?>
 
 
 <html>
 <head>
 <title>Order Now</title>
+
 <link rel='stylesheet' href='../css/order-cart.css' type='text/css' media='all' />
 <!-- Search function css -->
 <link rel="stylesheet" type="text/css" href="../css/inquiry.css">
@@ -27,6 +31,7 @@ require'../php/config.php';
 
 <!-- This icon pack is  used to geticons that is used in the footer -->
 	<script src="https://kit.fontawesome.com/a340bc40a1.js" crossorigin="anonymous"></script>
+<!-- -------------------------------------------------------------- -->
 
 </head>
 <body>
@@ -39,7 +44,7 @@ require'../php/config.php';
 
 		        <div class="menu">
 			        <ul  class="menu-ul">
-				        <li ><a class="menu-a" href="home.html">HOME</a></li>
+				        <li ><a class="menu-a" href="index.php">HOME</a></li>
 				        <li ><a class="menu-a"  href="about-us.html">ABOUT US </a></li>
 				        <li ><a class="menu-a"  href="how-it-works.html">HOW IT WORKS</a></li>
 				        <li ><a class="menu-a"  href="faq.html">FAQ</a></li>
@@ -80,13 +85,13 @@ require'../php/config.php';
 <div class ="order-main">
 	
 <?php
-if(!empty($_SESSION["shopping_cart"])) {
-$cart_count = count(array_keys($_SESSION["shopping_cart"]));
+	if(!empty($_SESSION["cart"])) {
+	$cart_count = count(array_keys($_SESSION["cart"]));
 ?> 
  
 
 <div class="cart_div">
-<a href="cart.php"><img src="../images/cart-icon.png" /><span><?php echo $cart_count; ?></span></a>
+	<a href="cart.php"><img src="../images/cart-icon.png" /><span><?php echo $cart_count; ?></span></a>
 </div>
 
 <?php
@@ -118,15 +123,15 @@ function select($sql,$displayType){
 	$result = $conn->query($sql);
 
 	while($row = $result->fetch_assoc()){
-			echo "<div class='product_wrapper'>
-				  <form method='post' action='../php/add-to-cart.php?type=".$displayType."'>
-				  <input type='hidden' name='code' value=".$row['code']." />
-				  <div class='image'><img src='".$row['image']."' width = '100px' height = '100px' /></div>
-				  <div class='name'>".$row['name']."</div>
-			   	  <div class='price'>Rs.".$row['price']."</div>
-				  <button type='submit' class='buy'>Add to Cart</button>
-				  </form>
-			   	  </div>";
+			echo "	<div class='product_wrapper'>
+				  			<form method='post' action='../php/add-to-cart.php?type=".$displayType."'>
+				  				<input type='hidden' name='code' value=".$row['code']." />
+				  						<div class='image'><img src='".$row['image']."' width = '100px' height = '100px' /></div>
+				  						<div class='name'>".$row['name']."</div>
+			   	  					<div class='price'>Rs.".$row['price']."</div>
+				  						<button type='submit' class='buy'>Add to Cart</button>
+				  			</form>
+			   	  	</div>";
 	        }
 }
 
@@ -172,9 +177,11 @@ function select($sql,$displayType){
 				<ul class="quick-link-ul">
 					<li><a class="quick-link-a" href="services.html">Services</a></li>
 					<li ><a class="quick-link-a" href="package.html">Packages</a></li>
+					<li ><a class="quick-link-a" href="feedback.php">Feedback</a></li>
+					<li ><a class="quick-link-a" href="review.php">Reviews</a></li>
 					<li ><a class="quick-link-a" href="donate.html">Donate</a></li>
 					<li ><a class="quick-link-a"  href="login.php">Login</a></li>
-					<li ><a class="quick-link-a" href="register.php">Register</a></li>
+					<li ><a class="quick-link-a" href="../php/logout.php">Logout</a></li>
 				</ul>	
 
 			</div> <!--end of content-3 div tag-->	

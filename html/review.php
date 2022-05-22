@@ -1,48 +1,7 @@
 <?php 
-
-require '../php/config.php';
-
-session_start();
-
-error_reporting(0);
-
-if (isset($_SESSION['username'])) {
-    header("location: user.php");
-    exit(); // if the user is logged in this will redirect in to the user page 
-}
-
-if (isset($_SESSION['adminname'])) {
-    header("location: admin.php");
-    exit(); // if the user is logged in this will redirect in to the user page 
-}
-
-if (isset($_POST['submit'])) {
-	$email = $_POST['email'];
-	$password = md5($_POST['password']);
-
-	$sql = "SELECT * FROM login_register WHERE email='$email' AND password='$password'";
-	$result = mysqli_query($conn, $sql);
-	if ($result->num_rows > 0) {
-		 $row = mysqli_fetch_assoc($result);
-		
-		if ($row["type"] == "user") {
-
-			$_SESSION['username'] = $row['username'];
-		    header("Location: index.php"); // redirects into home
-
-
-	    }elseif ($row["type"] == "admin"){
-
-			$_SESSION['adminname'] = $row['username'];
-
-		    header("Location: admin.php");
-	    }
-	} else {
-		echo "<script>alert('Woops! Email or Password is Wrong.')</script>";
-    }
-}
-
+require'../php/config.php';
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,8 +9,8 @@ if (isset($_POST['submit'])) {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>MyLoundry.lk</title>
+	<link rel="stylesheet" type="text/css" href="../css/review.css">
 	<link rel="stylesheet" type="text/css" href="../css/header-footer.css">
-	<link rel="stylesheet" type="text/css" href="../css/login-register.css">
 
 <!-- This icon pack is  used to geticons that is used in the footer -->
 	<script src="https://kit.fontawesome.com/a340bc40a1.js" crossorigin="anonymous"></script> 
@@ -88,21 +47,65 @@ if (isset($_POST['submit'])) {
 <!-- ---------------------------HEADER ENDS HERE--------------------------------------------------------------------- -->	
 		
 
-<div class="container">
-		<form action="" method="POST" class="login-email">
-			<p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
-			<div class="input-group">
-				<input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
-			</div>
-			<div class="input-group">
-				<input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
-			</div>
-			<div class="input-group">
-				<button name="submit" class="btn">Login</button>
-			</div>
-			<p class="login-register-text">Don't have an account? <a href="register.php">Register Here</a>.</p>
-		</form>
-	</div>
+
+
+
+
+
+
+
+<h1 class="space" >Reviews</h1>
+<img src="../images/speaker.png" class="img">
+
+
+
+	<center>
+            <table id="customers">
+           
+               <?php
+           
+           $sql ="select * from review";
+
+            $result = $conn->query($sql);
+		if ($result->num_rows > 0){
+                
+			
+			while($row = $result->fetch_assoc()){
+				
+				echo "<tr>";
+				
+				echo "<td style=text-align:center><img src= ../images/avtar.png class=avtar></td>";
+				echo "<td height=50px><b>".$row["Name"]."</b></td>";
+				
+				echo "<td>".$row["Review"]."</td>";
+				
+				echo "<td>".$row["Stars"]."</td>";
+				echo "<td>Stars</td>";
+               
+				
+            }}
+                ?>
+				</center>
+               
+            </table>
+
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- ---------------------------FOOTER BEGINS HERE--------------------------------------------------------------------- -->		
 		<div class="footer">
@@ -143,7 +146,7 @@ if (isset($_POST['submit'])) {
 					<li ><a class="quick-link-a" href="review.php">Reviews</a></li>
 					<li ><a class="quick-link-a" href="donate.html">Donate</a></li>
 					<li ><a class="quick-link-a"  href="login.php">Login</a></li>
-					<li ><a class="quick-link-a" href="../php/logout.php">Logout</a></li>
+					<li ><a class="quick-link-a" href="logout.php">Logout</a></li>
 				</ul>	
 
 			</div> <!--end of content-3 div tag-->	

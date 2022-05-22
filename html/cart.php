@@ -15,12 +15,12 @@ if (!isset($_SESSION['username'])) {
 
 if (isset($_POST['action']) && $_POST['action']=="remove"){
 
-	if(!empty($_SESSION["shopping_cart"])) {
+	if(!empty($_SESSION["cart"])) {
 
-				unset($_SESSION["shopping_cart"][$_POST['code']]);
+				unset($_SESSION["cart"][$_POST['code']]);
 			}
 
-			if(empty($_SESSION["shopping_cart"])) unset($_SESSION["shopping_cart"]);
+			if(empty($_SESSION["cart"])) unset($_SESSION["cart"]);
 		}
 	// will remove the item if its in the cart if the cart is empty will delete the cart session
 ?>
@@ -47,7 +47,7 @@ if (isset($_POST['action']) && $_POST['action']=="remove"){
 
 		        <div class="menu">
 			        <ul  class="menu-ul">
-				        <li ><a class="menu-a" href="home.html">HOME</a></li>
+				        <li ><a class="menu-a" href="index.php">HOME</a></li>
 				        <li ><a class="menu-a"  href="about-us.html">ABOUT US </a></li>
 				        <li ><a class="menu-a"  href="how-it-works.html">HOW IT WORKS</a></li>
 				        <li ><a class="menu-a"  href="faq.html">FAQ</a></li>
@@ -70,15 +70,15 @@ if (isset($_POST['action']) && $_POST['action']=="remove"){
 
 <?php
 
-if(!empty($_SESSION["shopping_cart"])) {
-	$cart_count = count(array_keys($_SESSION["shopping_cart"]));
+if(!empty($_SESSION["cart"])) {
+	$cart_count = count(array_keys($_SESSION["cart"]));
 ?>
 
 <div class="cart_div">
 
-<a href="cart.php">
-<img src="../images/cart-icon.png" /> 
-<span><?php echo $cart_count; ?></span></a>
+	<a href="cart.php">
+	<img src="../images/cart-icon.png" /> 
+	<span><?php echo $cart_count; ?></span></a>
 
 </div>
 
@@ -89,59 +89,65 @@ if(!empty($_SESSION["shopping_cart"])) {
 <div class="cart">
 
 <?php
-if(isset($_SESSION["shopping_cart"])){
+if(isset($_SESSION["cart"])){
     $total_price = 0;
 ?>
 
 <table class="table">
-<tbody>
+
 <tr>
-<td></td>
-<td>ITEM NAME</td>
-<td>QUANTITY</td>
-<td>UNIT PRICE</td>
-<td>ITEM TOTAL</td>
+
+	<td>ITEM NAME</td>
+	<td>QUANTITY</td>
+	<td>UNIT PRICE</td>
+	<td>ITEM TOTAL</td>
+
 </tr>	
 
 <?php		
-foreach ($_SESSION["shopping_cart"] as $product){
+foreach ($_SESSION["cart"] as $product){
 ?>
 
 <tr>
 
-<td>
-	<img src='<?php echo $product["image"]; ?>' width="50" height="50" />
-</td>
+	<td>
+		<img src='<?php echo $product["image"]; ?>' width="50" height="50" />
+	</td>
 
-<td>
-	<?php echo $product["name"]; ?><br />
+	<td>
+		<?php echo $product["name"]; ?><br />
+		<form method='post' action='<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>'>
 
-<form method='post' action='<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>'>
+		<input type='hidden' name='code' value="<?php echo $product["code"]; ?>" />
+		<input type='hidden' name='action' value="remove" />
+		<button type='submit' class='remove'>Remove Item</button>
 
-<input type='hidden' name='code' value="<?php echo $product["code"]; ?>" />
-<input type='hidden' name='action' value="remove" />
-<button type='submit' class='remove'>Remove Item</button>
+		</form>
+	</td>
 
-</form>
-</td>
+	<td>
+		<?php echo $product["quantity"]; ?>	
+	</td>
 
-<td>
-	<?php echo $product["quantity"]; ?>	
-</td>
+	<td>
+		<?php echo "Rs.".$product["price"]; ?>
+	</td>
 
-<td><?php echo "Rs.".$product["price"]; ?></td>
-<td><?php echo "Rs.".(float)$product["price"]*(int)$product["quantity"]; ?></td>
+	<td>
+		<?php echo "Rs.".(float)$product["price"]*(int)$product["quantity"]; ?>
+	</td>
 </tr>
+
 <?php
 $total_price += ((float)$product["price"]*(float)$product["quantity"]);
 }
 ?>
 <tr>
-<td colspan="5" align="right">
-<strong>TOTAL: <?php echo "Rs.".$total_price; ?></strong>
-</td>
+	<td colspan="5" align="right">
+	<strong>TOTAL: <?php echo "Rs.".$total_price; ?></strong>
+	</td>
 </tr>
-</tbody>
+
 </table>		
 
 <?php
@@ -152,6 +158,7 @@ else{
 ?>
 </div>
 </div>
+
 <div class = "cart-to-order">
 	
         <button class="btn" onclick="window.location.href = 'order.php?type=showAll';">
@@ -199,9 +206,11 @@ else{
 				<ul class="quick-link-ul">
 					<li><a class="quick-link-a" href="services.html">Services</a></li>
 					<li ><a class="quick-link-a" href="package.html">Packages</a></li>
+					<li ><a class="quick-link-a" href="feedback.php">Feedback</a></li>
+					<li ><a class="quick-link-a" href="review.php">Reviews</a></li>
 					<li ><a class="quick-link-a" href="donate.html">Donate</a></li>
 					<li ><a class="quick-link-a"  href="login.php">Login</a></li>
-					<li ><a class="quick-link-a" href="register.php">Register</a></li>
+					<li ><a class="quick-link-a" href="logout.php">Logout</a></li>
 				</ul>	
 
 			</div> <!--end of content-3 div tag-->	

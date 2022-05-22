@@ -1,15 +1,15 @@
-<!--IT21173868
-    Gamlathge G.G.A.U.
-    Grpup 8.2_3 -->
+<!--
+IT21167546
+Rashmika MGT
+MLB_08.02_3
+ -->
 
-<?php 
-require'../php/config.php';
-session_start();
+ <?php
 
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
-}
-?>
+//any one can access this page
+
+require'../php/config.php'; ?> 
+ 
 
 <!DOCTYPE html>
 <html>
@@ -50,38 +50,58 @@ if (!isset($_SESSION['username'])) {
 
 <!-- ---------------------------HEADER ENDS HERE--------------------------------------------------------------------- -->	
 
-            <h1 class="h1">Notifications <img src="../images/bell.png" width="30px" height="30px" > </h1>
-            
-            <br>
 
-            <center>
-            </table> 
-            <table id="customers" style="width: 75%; ">
-            <td><label class=container><input type=checkbox onClick=toggle(this) label class=container> Select All <span class=checkmark></span>
-                </label></td>
-               
-               <?php
-           
-           $sql ="select * from notifications";
 
-            $result = $conn->query($sql);
-		if ($result->num_rows > 0){
-                
+
+
+<link rel="stylesheet" href="../css/feedback.css">
+
+	<form  method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">>
+	<div class="fdForm_BG">
+		<div class="feedback" >
+		
+		<h1>Send Us Your Feedback</h1><br><br>
+			Your Name :<br>
+			<input class="fdForm" placeholder=" name" type="text"  name="name" ><br>
 			
-			while($row = $result->fetch_assoc()){
-				
-				echo "<tr>";
-             
-                echo "<td><input type=checkbox name=select ></td> ";
-				echo "<td>".$row["Notification"]."</td>";
-				echo "<td>".$row["Date"]."</td>";
-				echo "<td>".$row["Time"]."</td>";
-                echo "<td style=text-align:center>del</td>";
-				
-            }}
-                ?>
-                </center>
-            </table>
+			<br>Email : <br>
+			
+			<input class="fdForm" placeholder=" email" type="email" name="email" ><br>
+			<br>
+			
+			<br>Feedback : <br>
+			<textarea name="feedback" id="feedback" cols="30" rows="10" ></textarea>
+			<br><br>
+			
+			<input class="button_animation" type="submit" value="Send Feedback ">
+			
+		</div>
+	</div>
+	</form>
+
+	
+		<?php
+		if(isset($_POST["name"])){
+		  $name = $_POST["name"];
+		  $email = $_POST["email"];
+		  $feedback = $_POST["feedback"];
+		  
+		  $sql = "INSERT INTO FEEDBACK (name,email,feedback) VALUES ('$name','$email','$feedback')";
+		
+		  if($conn->query($sql)){
+			echo "<script> alert('Feedback sent succesfully!')</script>";
+		  }
+		  else{
+		  echo "<script> alert('Failed to Send the feedback!')</script>";
+		  }
+		
+		  $conn->close();
+		}
+		?>
+
+		
+	
+
             
            
 <!-- ---------------------------FOOTER BEGINS HERE--------------------------------------------------------------------- -->     

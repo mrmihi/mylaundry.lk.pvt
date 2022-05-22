@@ -1,48 +1,3 @@
-<?php 
-
-require '../php/config.php';
-
-session_start();
-
-error_reporting(0);
-
-if (isset($_SESSION['username'])) {
-    header("location: user.php");
-    exit(); // if the user is logged in this will redirect in to the user page 
-}
-
-if (isset($_SESSION['adminname'])) {
-    header("location: admin.php");
-    exit(); // if the user is logged in this will redirect in to the user page 
-}
-
-if (isset($_POST['submit'])) {
-	$email = $_POST['email'];
-	$password = md5($_POST['password']);
-
-	$sql = "SELECT * FROM login_register WHERE email='$email' AND password='$password'";
-	$result = mysqli_query($conn, $sql);
-	if ($result->num_rows > 0) {
-		 $row = mysqli_fetch_assoc($result);
-		
-		if ($row["type"] == "user") {
-
-			$_SESSION['username'] = $row['username'];
-		    header("Location: index.php"); // redirects into home
-
-
-	    }elseif ($row["type"] == "admin"){
-
-			$_SESSION['adminname'] = $row['username'];
-
-		    header("Location: admin.php");
-	    }
-	} else {
-		echo "<script>alert('Woops! Email or Password is Wrong.')</script>";
-    }
-}
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,10 +6,10 @@ if (isset($_POST['submit'])) {
 
 	<title>MyLoundry.lk</title>
 	<link rel="stylesheet" type="text/css" href="../css/header-footer.css">
-	<link rel="stylesheet" type="text/css" href="../css/login-register.css">
 
 <!-- This icon pack is  used to geticons that is used in the footer -->
 	<script src="https://kit.fontawesome.com/a340bc40a1.js" crossorigin="anonymous"></script> 
+	<link rel="stylesheet" type="text/css" href="../css/services.css">
 
 
 </head>
@@ -86,23 +41,64 @@ if (isset($_POST['submit'])) {
 		</div> <!--end of navbar div tag-->
 
 <!-- ---------------------------HEADER ENDS HERE--------------------------------------------------------------------- -->	
-		
+<div class = "home">		
 
-<div class="container">
-		<form action="" method="POST" class="login-email">
-			<p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
-			<div class="input-group">
-				<input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
-			</div>
-			<div class="input-group">
-				<input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
-			</div>
-			<div class="input-group">
-				<button name="submit" class="btn">Login</button>
-			</div>
-			<p class="login-register-text">Don't have an account? <a href="register.php">Register Here</a>.</p>
-		</form>
-	</div>
+<div class ="service">
+
+	<h1 style="margin:30vh 0 10vh 0; font-size: 50px; text-align: center; font-family: monospace;" >Our sevices</h1>
+
+<div id = "service_a" class="package">
+	<div class="package-body">
+		<h3 class="package-type-name">Wash + Press</h3>
+		<img class="package-logo" src="../images/washandpress.jpg" alt="wash+press logo">
+		<p class="package-discription">“A wardrobe full of fresh, clean clothes which are neatly pressed” Sounds like an impossible dream? We are here to make it possible! Don't waste another beautiful Weekend for washing, drying and folding laundry. Let washapp to handle the dirty work while you spend your time enjoying life.</p>
+	</div> <!--end of pakage-1 div tag-->
+
+	<div class="package-body">
+		<h3 class="package-type-name">Only Wash</h3>
+		<img class="package-logo" src="../images/onlywash.jpg" alt="onlywash logo">
+		<p class="package-discription">We bring you a bag, you fill it with clothes. We then send your dirty clothes for a quick spin, tumble dry and return them to you crisp clean. This service is charged per kilo, so don’t hesitate to send us a truckload of work! But please remember, items that require extra care including toweling and bedding should be selected separately.</p>
+   </div> <!--end of pakage-2 div tag-->
+
+	<div class="package-body">
+		<h3 class="package-type-name">Only Press</h3>
+		<img class="package-logo" src="../images/onlypress.jpg" alt="onlypress logo">
+		<p class="package-discription">Yes, you heard it right!! We do pressing for you. Have a stack of clothes that don’t need washing but could use ironing? Send them to us and get back freshly steam ironed ready-to-wear outfits and say good bye to wrinkles.</p>
+	</div> <!--end of pakage-3 div tag-->
+
+	<div class="package-body">		
+		<h3 class="package-type-name">Dry Clean</h3>
+		<img class="package-logo" src="../images/dryclean.jpg" alt="Dryclean logo">
+		<p class="package-discription">Delicate fabrics that can’t withstand detergent? Tired of rushing around and re-arranging your schedule trying to make it in time to drop off or pick up your dry cleaning? Wouldn't it be nice to have freshly pressed suits delivered right to your door, right when you need them? With Washapp, now you can!</p>
+	</div> <!--end of pakage-3 div tag-->
+	
+</div><!--end of pakage div tag-->
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- ---------------------------FOOTER BEGINS HERE--------------------------------------------------------------------- -->		
 		<div class="footer">
