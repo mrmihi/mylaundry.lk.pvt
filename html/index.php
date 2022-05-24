@@ -73,7 +73,7 @@
 	</div> <!--end of pakage-3 div tag-->
 	
 </div><!--end of pakage div tag-->
-</div>
+</div> <!-- end of service -->
 
 
 
