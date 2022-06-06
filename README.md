@@ -1,5 +1,9 @@
 # mylaundry.lk
-Group-Project
 
-This website works well with "940*XXXX <" view ports. Any display device smaller than the mentioned resolution
-will not display the website properly.
+<h2>Implemented Functionalities</h2>
+
+Dynamically display order items from the database
+Working cart using sessions
+Contact us form to get and store user input
+Access modification by using cookies
+Search functionality with multiple search attributes for orders & inquiries
